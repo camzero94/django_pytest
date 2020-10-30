@@ -10,7 +10,6 @@ djangorestframework = "*"
 companies = "*"
 pytest-django = "*"
 pytest = "*"
-black = "*"
 
 [requires]
 python_version = "3.8"
