@@ -11,6 +11,7 @@ pytest = "*"
 pytest-django = "*"
 djangorestframework = "*"
 pytest-cov = "*"
+pytest-xdist = "*"
 
 [requires]
 python_version = "3.8"
