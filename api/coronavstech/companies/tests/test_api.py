@@ -1,4 +1,6 @@
 import json
+from typing import List
+
 import pytest
 from django.urls import reverse
 
@@ -91,6 +93,15 @@ def test_should_be_skipped() -> None:
 # --------------Learn about fixtures tests--------------
 
 
+@pytest.fixture
+def companies(request, company) -> List[Company]:
+    companies = []
+    names = request.param
+    for name in names:
+        companies.append(company(name=name))
+    return companies
+
+
 @pytest.fixture()
 def company(**kwargs):
     def _company_factory(**kwargs) -> Company:
@@ -100,11 +111,15 @@ def company(**kwargs):
     return _company_factory
 
 
-def test_multiple_companies_exists_should_succeed(client, company) -> None:
-    tiktok: Company = company(name="Tiktok")
-    twitch: Company = company(name="Twitch")
-    test_company: Company = company()
-    company_names = {tiktok.name, twitch.name, test_company.name}
+@pytest.mark.parametrize(
+    "companies",
+    [["Tiktok", "Twitch", "Test Company INC"], ["Facebook", "Instagram"]],
+    ids=["3 T companies", "Zuckerberg's companies"],
+    indirect=True,
+)
+def test_multiple_companies_exists_should_succeed(client, companies) -> None:
+    company_names = set(map(lambda x: x.name, companies))
+    print(company_names)
     response_companies = client.get(companies_url).json()
     assert len(company_names) == len(response_companies)
     response_company_names = set(
