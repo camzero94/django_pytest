@@ -12,6 +12,7 @@ pytest-django = "*"
 djangorestframework = "*"
 pytest-cov = "*"
 pytest-xdist = "*"
+requests = "*"
 
 [requires]
 python_version = "3.8"
