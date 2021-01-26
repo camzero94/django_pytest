@@ -13,6 +13,7 @@ djangorestframework = "*"
 pytest-cov = "*"
 pytest-xdist = "*"
 requests = "*"
+allure-pytest = "*"
 
 [requires]
 python_version = "3.8"
