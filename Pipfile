@@ -15,6 +15,7 @@ pytest-xdist = "*"
 requests = "*"
 allure-pytest = "*"
 pytest-env = "*"
+pytest-sugar = "*"
 
 [requires]
 python_version = "3.8"
