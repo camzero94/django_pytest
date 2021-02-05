@@ -16,6 +16,7 @@ requests = "*"
 allure-pytest = "*"
 pytest-env = "*"
 pytest-sugar = "*"
+responses = "*"
 
 [requires]
 python_version = "3.8"
