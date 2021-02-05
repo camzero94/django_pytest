@@ -2,7 +2,6 @@ import pytest
 import requests
 import json
 
-
 testing_env_companies_url = "http://127.0.0.1:8000/companies/"
 
 
@@ -69,12 +68,23 @@ def test_mocked_dogecoin_api() -> None:
         },
         status=200,
     )
+
+    assert process_crypto() == 29
+
+
+def process_crypto() -> int:
     response = requests.get(
         url="https://api.cryptonator.com/api/ticker/doge-usd",
         headers={"User-Agent": "Mozilla/5.0"},
     )
 
-    assert response.status_code == 200
     response_content = json.loads(response.content)
-    assert response_content["ticker"]["base"] == "EDEN"
-    assert response_content["ticker"]["target"] == "EDEN-USD"
+    if response.status_code != 200:
+        raise ValueError("Request to Crypto API FAILED!")
+
+    coin_name = response_content["ticker"]["base"]
+    if coin_name == "EDEN":
+        # YAY! We The Response was mocked
+        return 29
+
+    return 42
