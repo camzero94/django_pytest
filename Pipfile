@@ -17,6 +17,8 @@ allure-pytest = "*"
 pytest-env = "*"
 pytest-sugar = "*"
 responses = "*"
+install = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.8"
