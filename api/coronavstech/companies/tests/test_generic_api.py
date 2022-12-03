@@ -32,6 +32,7 @@ def cleanup_company(company_id: str) -> None:
     assert response.status_code == 204
 
 
+@pytest.mark.xfail(reason="api is unstable")
 @pytest.mark.crypto
 def test_dogecoin_api() -> None:
     response = requests.get(
