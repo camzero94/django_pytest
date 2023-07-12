@@ -38,13 +38,13 @@ jobs:
       #     path: ${{ env.HOME }}/.cache/pipenv  # Adjust the path to match your Pipenv environment location
       #     key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile.lock') }}
 
-          # export PYTHONPATH=$PYTHONPATH:$PYTHONPATH/api/coronavstech
-          # export DJANGO_SETTINGS_MODULE="api.coronavstech.coronavstech.settings"
       # Runs a single command using the runners shell
       - name: Django Company API test 
         run:  |
           pip install pipenv --upgrade 
           pipenv install --system
+          export PYTHONPATH=$PYTHONPATH
+          export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
           pytest api/coronavstech -s -v 
 
 
