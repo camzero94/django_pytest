@@ -20,6 +20,10 @@ jobs:
   test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    # env:
+      # PYTHONPATH: ${{vars.PYTHONPATH}}
+      # DJANGO_SETTINGS_MODULE: ${{vars.DJANGO_SETTINGS_MODULE}} 
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -41,6 +45,8 @@ jobs:
           pip install pipenv --upgrade 
           pipenv install --system
 
+          export PYTHONPATH=${{vars.PYTHONPATH}}
+          export DJANGO_SETTINGS_MODULE=${{vars.DJANGO_SETTINGS_MODULE}} 
           # export PYTHONPATH=$PYTHONPATH:$PYTHONPATH/api/coronavstech
           # export DJANGO_SETTINGS_MODULE="api.coronavstech.coronavstech.settings"
           pytest api/coronavstech -s -v 
