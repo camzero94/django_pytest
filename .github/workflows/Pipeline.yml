@@ -6,9 +6,10 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main","camzero" ]
+    branches: ["camzero" ]
   pull_request:
-    branches: [ "main","camzero" ]
+    branches: [ "camzero" ]
+
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -19,7 +20,9 @@ jobs:
   test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    env:
+      PYTHONPATH: '$PYTHONPATH:$PYTHONPATH/api/coronavstech'
+      DJANGO_SETTINGS_MODULE: 'api.coronavstech.coronavstech.settings'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -29,13 +32,11 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.8'
-      - name: Cache Pipenv
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.HOME }}/.cache/pipenv  # Adjust the path to match your Pipenv environment location
-          key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile.lock') }}
-
-
+      # - name: Cache Pipenv
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ${{ env.HOME }}/.cache/pipenv  # Adjust the path to match your Pipenv environment location
+      #     key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile.lock') }}
 
       # Runs a single command using the runners shell
       - name: Django Company API test 
