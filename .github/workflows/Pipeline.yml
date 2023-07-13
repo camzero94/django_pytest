@@ -46,8 +46,8 @@ jobs:
           pip install pipenv --upgrade 
           pipenv install --system
 
-          export PYTHONPATH=PYTHONPATH
-          export DJANGO_SETTINGS_MODULE=DJANGO_SETTINGS_MODULE
+          export PYTHONPATH='$PYTHONPATH'
+          export DJANGO_SETTINGS_MODULE='$DJANGO_SETTINGS_MODULE'
 
           echo $PYTHONPATH
           echo $DJANGO_SETTINGS_MODULE
