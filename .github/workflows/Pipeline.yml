@@ -50,6 +50,6 @@ jobs:
           # export PYTHONPATH=$PYTHONPATH:$PYTHONPATH/api/coronavstech
           # export DJANGO_SETTINGS_MODULE="api.coronavstech.coronavstech.settings"
           pytest api/coronavstech -s -v 
-          pytest fibonacci/ -s -v 
+          pytest course/fibonacci/ -s -v 
 
 
