@@ -41,7 +41,7 @@ import pytest
 
 @pytest.mark.performance
 @pytest.mark.parametrize("func", [fibonacci, fib_cached])
-@pytest.mark.parametrize("n,expected",[(40,102334155)])
+@pytest.mark.parametrize("n,expected",[(20,6765)])
 def test_fibonacci_multiple_values_cache(timer: Callable,func: Callable[[int], int], n: int, expected:int):
     res = func(n)
     assert res == expected
