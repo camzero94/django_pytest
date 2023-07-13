@@ -43,14 +43,14 @@ jobs:
       # Runs a single command using the runners shell
       - name: Django Company API test 
         run:  |
-          pip install pipenv --upgrade 
-          pipenv install --system
+          echo "Python path is  $PYTHONPATH"
+          echo "Django is $DJANGO_SETTINGS_MODULE"
+          # pip install pipenv --upgrade 
+          # pipenv install --system
 
           # export PYTHONPATH='$PYTHONPATH'
           # export DJANGO_SETTINGS_MODULE='$DJANGO_SETTINGS_MODULE'
 
-          echo 'Python path is  $PYTHONPATH'
-          echo 'Django is $DJANGO_SETTINGS_MODULE'
           # export PYTHONPATH=$PYTHONPATH:$PYTHONPATH/api/coronavstech
           # export DJANGO_SETTINGS_MODULE="api.coronavstech.coronavstech.settings"
           # pytest api/coronavstech -s -v 
