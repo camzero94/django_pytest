@@ -47,7 +47,7 @@ jobs:
           pipenv install --system
 
           export PYTHONPATH=${{vars.PYTHONPATH}}
-          export DJANGO_SETTINGS_MODULE=${{vars.DJANGO_SETTINGS_MODULE}
+          export DJANGO_SETTINGS_MODULE=${{vars.DJANGO_SETTINGS_MODULE}}
 
           echo PYTHONPATH
           echo DJANGO_SETTINGS_MODULE
