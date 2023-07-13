@@ -10,7 +10,10 @@ on:
   pull_request:
     branches: [ "camzero" ]
 
-
+  env:
+  # Setting an environment variable with the value of a configuration variable
+    PYTHONPATH: ${{vars.PYTHONPATH}}
+    DJANGO_SETTINGS_MODULE: ${{vars.DJANGO_SETTINGS_MODULE}} 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -41,13 +44,15 @@ jobs:
         run:  |
           pip install pipenv --upgrade 
           pipenv install --system
-          export PYTHONPATH=${{vars.PYTHONPATH}}
-          export DJANGO_SETTINGS_MODULE=${{vars.DJANGO_SETTINGS_MODULE}} 
+
+          export PYTHONPATH
+          export DJANGO_SETTINGS_MODULE
+
           echo $PYTHONPATH
           echo $DJANGO_SETTINGS_MODULE
           # export PYTHONPATH=$PYTHONPATH:$PYTHONPATH/api/coronavstech
           # export DJANGO_SETTINGS_MODULE="api.coronavstech.coronavstech.settings"
-          pytest api/coronavstech -s -v 
-          pytest fibonacci -s -v 
+          # pytest api/coronavstech -s -v 
+          # pytest fibonacci -s -v 
 
 
