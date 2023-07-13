@@ -43,8 +43,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Django Company API test 
         run:  |
-          # pip install pipenv --upgrade 
-          # pipenv install --system
+          pip install pipenv --upgrade 
+          pipenv install --system
 
           export PYTHONPATH=${{vars.PYTHONPATH}}
           export DJANGO_SETTINGS_MODULE=${{vars.DJANGO_SETTINGS_MODULE}
