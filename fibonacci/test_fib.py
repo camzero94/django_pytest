@@ -1,8 +1,8 @@
 
 from fibonacci.fib import fibonacci, fib_cached
+from fixtures import  timer,track_performance 
 from typing import Callable
 import pytest
-
 
 # def my_parametrized(*args, **kwargs):
 #     def wrap_function(func):
@@ -24,19 +24,31 @@ import pytest
 
 # @my_parametrized("n,expected",[(0,0),(1,1),(2,1),(20,6765)])
 
-# Parametrize 
-@pytest.mark.parametrize("n,expected",[(0,0),(1,1),(2,1),(20,6765)])
-def test_fibonacci_multiple_values(n:int, expected:int):
-    res = fibonacci(n)
-    assert res == expected
+# # Parametrize 
+# @pytest.mark.parametrize("n,expected",[(0,0),(1,1),(2,1),(20,6765)])
+# def test_fibonacci_multiple_values(n:int, expected:int):
+#     res = fibonacci(n)
+#     assert res == expected
 
-#Cache Version
 
-@pytest.mark.parametrize("func", [fibonacci,fib_cached])
-@pytest.mark.parametrize("n,expected",[(0,0),(1,1),(2,1),(20,6765)])
-def test_fibonacci_multiple_values_cache(func: Callable[[int], int], n: int, expected:int):
+
+
+
+
+
+# Cache Version
+
+
+@pytest.mark.performance
+@pytest.mark.parametrize("func", [fibonacci, fib_cached])
+@pytest.mark.parametrize("n,expected",[(40,102334155)])
+def test_fibonacci_multiple_values_cache(timer: Callable,func: Callable[[int], int], n: int, expected:int):
     res = func(n)
     assert res == expected
 
 
-
+# @pytest.mark.performance
+# @track_performance
+# def test_fibonacci():
+#     res = fibonacci(40)
+#     assert res == 102334155 

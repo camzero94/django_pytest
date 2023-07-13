@@ -1,4 +1,5 @@
 
+
 def fibonacci(n: int):
     if n == 0:
         return 0
@@ -18,6 +19,6 @@ def fib_cached(n: int):
     if n == 0 or n == 1:
         return n
 
-    fn = fibonacci(n-2) + fibonacci(n-1)
+    fn = fib_cached(n-2) + fib_cached(n-1)
     cache[n] = fn
     return fn
